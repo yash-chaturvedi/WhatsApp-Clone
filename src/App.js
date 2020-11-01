@@ -5,10 +5,13 @@ import Sidebar from './Sidebar';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 import { useState } from 'react';
 import Login from './Login';
+import { useStateValue } from './StateProvider';
+
+
 
 function App() {
 
-  const [user , setUser] = useState('');
+  const [{user},dispatch] = useStateValue();
 
   // BEM naming convention
   return (
@@ -24,13 +27,13 @@ function App() {
 
             <Switch>
           
-              <Route path="/rooms/:roomId">
+              <Route path={`/rooms/:roomId`}>
                 
                 <Chat/>
               </Route>
 
               <Route path="/">
-                <Chat/>
+                {/* <Chat/> */}
               </Route>
               
             </Switch>
